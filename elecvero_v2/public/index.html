@@ -1,41 +1,248 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ELECVERO | B2B Electrical Accessories</title><meta name="description" content="ELECVERO B2B electrical accessories — pack-wise buying, trade pricing and fast repeat ordering."><link rel="stylesheet" href="assets/styles.css"></head><body>
-<div class="top"><span>TRADE-FOCUSED ELECTRICAL ACCESSORIES</span><span>Support: support@elecvero.in · +91 72086 83604</span></div>
-<header class="header"><div class="head"><a class="brand" href="#top">ELEC<span>V</span>ERO<i>°</i></a><div class="search"><input id="search" placeholder="Search by product, SKU, specification or category…"></div><div class="actions"><button class="btn" onclick="openAccount()">Business account</button><button class="btn" onclick="window.scrollTo({top:document.querySelector('#catalogue').offsetTop-80,behavior:'smooth'})">Browse</button><button class="btn primary" onclick="openCart()">Basket <span id="cartCount">0</span></button></div></div><div class="nav"><div class="navin" id="navcats"></div></div></header>
-<main id="top" class="wrap">
-<section class="hero"><div class="heroText"><div class="eyebrow">ELECVERO TRADE PORTAL</div><h1>Stock smarter.<br>Buy with confidence.</h1><p>A full B2B catalogue of electrical accessories, rebuilt under an ELECVERO SKU system — individual units, pack quantities, trade pricing and fast basket ordering.</p><button class="btn primary" onclick="document.querySelector('#catalogue').scrollIntoView({behavior:'smooth'})">Shop the catalogue</button></div><div class="heroVisual"><div class="orb">EV</div></div></section>
-<section class="stats"><div class="stat"><b id="statProducts">—</b><span>individual product SKUs</span></div><div class="stat"><b id="statCats">—</b><span>trade categories</span></div><div class="stat"><b>5–15%</b><span>cart-value trade savings</span></div><div class="stat"><b>24×7</b><span>online order capture</span></div></section>
-<section class="section"><div class="sectionHead"><div><h2>Shop by category</h2><p>Organised around how the trade buys.</p></div></div><div class="categories" id="categories"></div></section>
-<div class="tradebar"><div><b>Trade pricing gets better as your basket grows.</b><br><span>5% at ₹0–₹9,999 · 7.5% at ₹10K+ · 10% at ₹25K+ · 12.5% at ₹50K+ · 15% at ₹1L+</span></div><button class="btn dark" onclick="openCart()">View basket</button></div>
-<section class="section" id="catalogue"><div class="sectionHead"><div><h2>All products</h2><p>Individual ELECVERO SKUs. Pack quantity shown on every product.</p></div><div class="count" id="count">Loading…</div></div><div class="toolbar"><select id="catFilter"><option value="">All categories</option></select><select id="sort"><option value="relevance">Relevance</option><option value="priceAsc">Price: low to high</option><option value="priceDesc">Price: high to low</option><option value="name">Name</option></select><button class="btn" onclick="clearFilters()">Clear</button></div><div class="products" id="products"></div></section>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ELECVERO — B2B Electrical Accessories</title>
+<meta name="description" content="ELECVERO — trade-first B2B electrical accessories. Pack-wise buying, basket-based trade pricing and repeat ordering.">
+<link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<div class="topbar"><div>TRADE-FIRST ELECTRICAL ACCESSORIES</div><div>Support: <a class="email-link" href="mailto:support@elecvero.in">support@elecvero.in</a> · +91 72086 83604</div></div>
+
+<header class="header">
+  <div class="nav wrap">
+    <a class="logo" href="#top" aria-label="ELECVERO home"><span class="logo-mark">EV</span><span>ELECVERO<small>TRADE ELECTRICALS</small></span></a>
+    <div class="searchbox"><span>⌕</span><input id="search" placeholder="Search products, category or ELECVERO SKU…"></div>
+    <div class="nav-actions">
+      <button class="outline" id="accountBtn">Business account</button>
+      <button class="basket-btn" id="basketBtn">Basket <b id="cartCount">0</b></button>
+    </div>
+  </div>
+  <nav class="category-nav"><div class="wrap" id="navcats"></div></nav>
+</header>
+
+<main id="top">
+<section class="hero wrap">
+  <div class="hero-copy">
+    <div class="eyebrow">BUILT FOR THE TRADE</div>
+    <h1>Stock smarter.<br><em>Sell faster.</em></h1>
+    <p>Electrical accessories organised around the way B2B actually buys — individual SKUs, pack quantities, basket-based trade savings and a fast order desk.</p>
+    <div class="hero-actions"><button class="primary" onclick="document.querySelector('#catalogue').scrollIntoView({behavior:'smooth'})">Browse trade range →</button><button class="light" onclick="openAccount()">Become a dealer</button></div>
+    <div class="hero-proof"><span><b id="statProducts">481</b> individual SKUs</span><span><b id="statCats">29</b> categories</span><span><b>5–15%</b> basket savings</span></div>
+  </div>
+  <div class="hero-products">
+    <div class="hero-label">TRADE DESK · LIVE-READY</div>
+    <div class="hero-collage">
+      <div class="hero-card hc1"><img src="/assets/images/EV-MPL-001.jpg" onerror="this.src='/assets/images/product-placeholder.svg'"></div>
+      <div class="hero-card hc2"><img src="/assets/images/EV-LHA-001.jpg" onerror="this.src='/assets/images/product-placeholder.svg'"></div>
+      <div class="hero-card hc3"><img src="/assets/images/EV-FRP-001.jpg" onerror="this.src='/assets/images/product-placeholder.svg'"></div>
+      <div class="hero-badge"><b>ELECVERO</b><span>Trade-ready buying</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap stats">
+  <div><b id="statProducts2">481</b><span>catalogue SKUs</span></div>
+  <div><b id="statCats2">29</b><span>trade categories</span></div>
+  <div><b>5%</b><span>entry basket discount</span></div>
+  <div><b>15%</b><span>at ₹1 lakh+ basket</span></div>
+</section>
+
+<section class="wrap section">
+  <div class="section-head"><div><div class="eyebrow dark">SHOP BY CATEGORY</div><h2>Built around the counter.</h2><p>Jump directly into the product families your business buys most often.</p></div></div>
+  <div class="categories" id="categories"></div>
+</section>
+
+<section class="wrap trade-banner">
+  <div><strong>Better basket. Better trade price.</strong><span>5% at ₹0–₹9,999 · 7.5% at ₹10K+ · 10% at ₹25K+ · 12.5% at ₹50K+ · 15% at ₹1L+</span></div>
+  <button class="dark" onclick="openCart()">Open basket →</button>
+</section>
+
+<section class="category-ticker" aria-label="ELECVERO product categories"><div class="ticker-track" id="categoryTicker"></div></section>
+
+<section class="wrap section" id="catalogue">
+  <div class="section-head catalogue-head">
+    <div><div class="eyebrow dark">ELECVERO CATALOGUE</div><h2 id="catalogueTitle">Choose a category</h2><p id="catalogueIntro">Select a product bucket to see its complete range. Your catalogue stays clean until you choose what you want to buy.</p></div>
+    <div class="result-count" id="count">Loading…</div>
+  </div>
+  <div class="category-back" id="categoryBack" hidden><button class="outline" onclick="showAllCategories()">← Back to all categories</button><span id="selectedCategoryLabel"></span></div>
+  <div class="toolbar">
+    <select id="catFilter"><option value="">All categories</option></select>
+    <select id="sort"><option value="relevance">Relevance</option><option value="priceAsc">Price: low to high</option><option value="priceDesc">Price: high to low</option><option value="name">Name</option></select>
+    <button class="outline" id="clearBtn">Clear filters</button>
+  </div>
+  <div class="products" id="products"></div>
+</section>
 </main>
-<footer class="footer"><div class="footgrid"><div><div class="brand">ELEC<span>V</span>ERO<i>°</i></div><p>Electrical accessories for the trade. Built for pack-wise buying, repeat orders and scalable dealer relationships.</p></div><div><b>Trade support</b><p>support@elecvero.in<br>+91 72086 83604<br>WhatsApp ordering available</p></div><div><b>Business systems</b><p>Website-first launch. Zoho Inventory, Zoho Books, online payments and GST workflows can be connected as the business goes live.</p></div></div></footer>
-<aside class="drawer" id="drawer"><div class="drawerHead"><b>Trade basket</b><button class="btn" onclick="closeCart()">Close</button></div><div class="basket" id="basket"></div><div class="summary" id="summary"></div></aside>
-<div class="modal" id="accountModal"><div class="modalbox"><div class="modalhead"><div><div class="sku">ELECVERO BUSINESS ACCOUNT</div><h2>Buy as a business</h2></div><button class="btn" onclick="closeAccount()">Close</button></div><p class="modaltext">Apply for dealer / business onboarding and receive trade-order support, quotation assistance and future account pricing. GST details can be added after registration.</p><div class="formgrid"><input id="accName" placeholder="Business / contact name"><input id="accPhone" placeholder="Mobile number"><input id="accCity" placeholder="City"><input id="accGst" placeholder="GSTIN (optional for now)"><textarea id="accNeed" placeholder="What products do you usually buy?"></textarea></div><button class="btn primary full" onclick="sendAccount()">Send onboarding request</button></div></div>
-<div class="modal" id="productModal"><div class="modalbox productModal"><div class="modalhead"><div class="sku" id="pmSku"></div><button class="btn" onclick="closeProduct()">Close</button></div><div class="pmgrid"><div class="pmimg"><img id="pmImg"></div><div><h2 id="pmName"></h2><p id="pmDesc" class="modaltext"></p><div class="pmfacts"><div><span>List price</span><b id="pmMrp"></b></div><div><span>Trade price from</span><b id="pmTrade"></b></div><div><span>Pack / MOQ</span><b id="pmPack"></b></div></div><button class="btn primary full" id="pmAdd">Add to basket</button></div></div></div></div>
+
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <div><div class="footer-logo">ELECVERO</div><p>Electrical accessories for the trade. Built for pack-wise buying, repeat orders and scalable dealer relationships.</p></div>
+    <div><b>Trade desk</b><p><a class="email-link" href="mailto:support@elecvero.in">support@elecvero.in</a><br>+91 72086 83604<br><a class="email-cta" href="mailto:support@elecvero.in?subject=ELECVERO%20Trade%20Enquiry">Email the trade desk →</a></p></div>
+    <div><b>Business systems</b><p>Cloudflare Worker + D1 order capture. Payment, GST and Zoho integrations can be connected without rebuilding the storefront.</p></div>
+    <div><b>Policies</b><p><a href="/terms.html">Terms</a><br><a href="/privacy.html">Privacy</a></p></div>
+  </div>
+  <div class="wrap footer-bottom">© 2026 ELECVERO · Trade Electricals</div>
+</footer>
+
+<aside class="drawer" id="drawer">
+  <div class="drawer-head"><div><b>Trade basket</b><small id="tierHint"></small></div><button class="close" onclick="closeCart()">×</button></div>
+  <div class="basket" id="basket"></div>
+  <div class="summary" id="summary"></div>
+</aside>
+
+<div class="modal" id="productModal"><div class="modal-box product-modal">
+  <div class="modal-head"><div><span class="sku" id="pmSku"></span><h2 id="pmName"></h2></div><button class="close" onclick="closeProduct()">×</button></div>
+  <div class="product-detail">
+    <div class="detail-img"><img id="pmImg"></div>
+    <div><p id="pmDesc" class="muted"></p><div class="facts"><div><small>List price</small><b id="pmMrp"></b></div><div><small>Trade price from</small><b id="pmTrade"></b></div><div><small>Pack / MOQ</small><b id="pmPack"></b></div></div><button class="primary full" id="pmAdd">Add pack to basket</button></div>
+  </div>
+</div></div>
+
+<div class="image-lightbox" id="imageLightbox" role="dialog" aria-modal="true" aria-label="Enlarged product image">
+  <button class="image-lightbox-close" onclick="closeImageLightbox()" aria-label="Close">×</button>
+  <div class="image-lightbox-stage"><img id="lightboxImg" alt=""><div class="image-lightbox-caption" id="lightboxCaption"></div></div>
+</div>
+
+<div class="modal pin-modal" id="pincodeModal">
+  <div class="modal-box pin-box">
+    <div class="pin-visual"><div class="pin-icon">⌖</div><div><span class="sku">DELIVERY CHECK</span><h2>Can we deliver to you?</h2><p class="muted">Enter your 6-digit PIN code before you start building a trade basket. We’ll check whether the PIN is configured for ELECVERO delivery coverage.</p></div></div>
+    <div class="pin-form"><input id="pinInput" inputmode="numeric" maxlength="6" placeholder="Enter PIN code" aria-label="PIN code"><button class="primary" onclick="checkPincode()">Check serviceability</button></div>
+    <p class="form-status" id="pinStatus"></p>
+    <button class="text-link" onclick="skipPincode()">Continue browsing for now</button>
+  </div>
+</div>
+
+<div class="modal" id="accountModal"><div class="modal-box">
+  <div class="modal-head"><div><span class="sku">ELECVERO BUSINESS ACCOUNT</span><h2>Start a trade relationship</h2></div><button class="close" onclick="closeAccount()">×</button></div>
+  <div class="account-hero">
+    <div class="account-visual"><img src="/assets/images/EV-MPL-001.jpg" onerror="this.src='/assets/images/product-placeholder.svg'" alt="ELECVERO trade electrical accessories"></div>
+    <div><p class="muted">Open your ELECVERO dealer profile for trade pricing, bulk ordering and faster repeat purchases. The request is stored in the ELECVERO order system and can also be sent to the trade desk on WhatsApp.</p><div class="account-perks"><span>✓ Business profile</span><span>✓ Trade enquiries</span><span>✓ Faster repeat orders</span></div></div>
+  </div>
+  <div class="formgrid">
+    <input id="accBusiness" placeholder="Business name *">
+    <input id="accContact" placeholder="Contact name">
+    <input id="accPhone" placeholder="Mobile number *">
+    <input id="accEmail" placeholder="Email">
+    <input id="accCity" placeholder="City">
+    <input id="accGst" placeholder="GSTIN (optional)">
+    <textarea id="accNeed" placeholder="Products / categories you usually buy"></textarea>
+  </div>
+  <div class="form-actions"><button class="outline" onclick="sendAccountWhatsApp()">WhatsApp request</button><button class="primary" onclick="submitAccount()">Submit account request</button></div>
+  <p class="form-status" id="accountStatus"></p>
+</div></div>
+
+<div class="modal" id="checkoutModal"><div class="modal-box">
+  <div class="modal-head"><div><span class="sku">TRADE ORDER REQUEST</span><h2>Confirm your basket</h2></div><button class="close" onclick="closeCheckout()">×</button></div>
+  <div id="checkoutSummary" class="checkout-summary"></div>
+  <div class="formgrid">
+    <input id="coBusiness" placeholder="Business name *">
+    <input id="coContact" placeholder="Contact name">
+    <input id="coPhone" placeholder="Mobile number *">
+    <input id="coEmail" placeholder="Email">
+    <input id="coCity" placeholder="City">
+    <input id="coPincode" inputmode="numeric" maxlength="6" placeholder="Delivery PIN code *">
+    <input id="coGst" placeholder="GSTIN (optional)">
+  </div>
+  <div class="form-actions"><button class="outline" onclick="sendOrderWhatsApp()">WhatsApp basket</button><button class="primary" onclick="submitOrder()">Submit order request</button></div>
+  <p class="form-status" id="orderStatus"></p>
+</div></div>
+
+<div class="toast" id="toast"></div>
+
 <script>
-let products=[];let filtered=[];let cart={};
-const wa='+917208683604';
-const tier=[{min:100000,rate:.15},{min:50000,rate:.125},{min:25000,rate:.10},{min:10000,rate:.075},{min:0,rate:.05}];
-function rate(sub){return tier.find(x=>sub>=x.min).rate}
-function money(n){return n==null?'Price on request':'₹'+Number(n).toLocaleString('en-IN',{minimumFractionDigits:2,maximumFractionDigits:2})}
-async function init(){products=(await fetch('/api/products').then(r=>r.json())).products;document.getElementById('statProducts').textContent=products.length.toLocaleString('en-IN');let cats=[...new Set(products.map(p=>p.display_category))].sort();document.getElementById('statCats').textContent=cats.length;document.getElementById('categories').innerHTML=cats.map(c=>`<button class="cat" onclick="setCat(${JSON.stringify(c)})">${esc(c)}<small>${products.filter(p=>p.display_category===c).length} SKUs</small></button>`).join('');document.getElementById('navcats').innerHTML=cats.map(c=>`<a href="#catalogue" onclick="setCat(${JSON.stringify(c)})">${esc(c)}</a>`).join('');document.getElementById('catFilter').innerHTML='<option value="">All categories</option>'+cats.map(c=>`<option>${esc(c)}</option>`).join('');document.getElementById('search').addEventListener('input',render);document.getElementById('catFilter').addEventListener('change',render);document.getElementById('sort').addEventListener('change',render);render();loadCart()}
-function setCat(c){document.getElementById('catFilter').value=c;document.querySelector('#catalogue').scrollIntoView({behavior:'smooth'});render()}
-function clearFilters(){document.getElementById('search').value='';document.getElementById('catFilter').value='';document.getElementById('sort').value='relevance';render()}
-function render(){let q=document.getElementById('search').value.toLowerCase().trim(),c=document.getElementById('catFilter').value;filtered=products.filter(p=>(!c||p.display_category===c)&&(!q||(p.display_name+' '+p.description+' '+p.sku+' '+p.display_category).toLowerCase().includes(q)));let s=document.getElementById('sort').value;if(s==='priceAsc')filtered.sort((a,b)=>(a.mrp??1e99)-(b.mrp??1e99));if(s==='priceDesc')filtered.sort((a,b)=>(b.mrp??-1)-(a.mrp??-1));if(s==='name')filtered.sort((a,b)=>a.display_name.localeCompare(b.display_name));document.getElementById('count').textContent=filtered.length+' products';document.getElementById('products').innerHTML=filtered.map(card).join('')}
-function card(p){let img=p.image_src?`assets/images/${encodeURIComponent(p.image_src)}`:'assets/images/product-placeholder.svg';let trade=p.mrp!=null?money(p.mrp*0.95):'Price on request';return `<article class="card"><div class="pic"><img loading="lazy" src="${img}" alt="${esc(p.display_name)}"></div><div class="body"><div class="sku">${esc(p.sku)}</div><h3>${esc(p.display_name)}</h3><div class="desc">${esc(p.description)}</div><div class="price">${trade} <small>/ unit from</small></div><div class="pack"><span>List ${money(p.mrp)}</span><span>Pack ${esc(String(p.pack_qty||'—'))}</span></div><button class="btn" style="width:100%;margin-bottom:7px" onclick="openProduct('${p.sku}')">View details</button><button class="add" onclick="add('${p.sku}')">Add to basket</button></div></article>`}
-function add(sku){let p=products.find(x=>x.sku===sku);if(!p)return;if(!cart[sku])cart[sku]={p,qty:1};else cart[sku].qty++;saveCart();openCart()}
+const WA = "917208683604";
+const TIERS = [{min:100000,rate:.15},{min:50000,rate:.125},{min:25000,rate:.10},{min:10000,rate:.075},{min:0,rate:.05}];
+let products=[], cart={}, filtered=[];
+
+const money = n => n == null ? "Price on request" : "₹" + Number(n).toLocaleString("en-IN",{minimumFractionDigits:2,maximumFractionDigits:2});
+const rate = n => TIERS.find(t => n >= t.min)?.rate ?? .05;
+const esc = s => String(s ?? "").replace(/[&<>'"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[c]));
+const packSize = p => { const n=parseInt(p.pack_qty,10); return Number.isFinite(n)&&n>0?n:1; };
+const packLabel = p => p.pack_qty ? `${p.pack_qty} ${p.unit || "pieces"}/pack` : "Pack not specified";
+const lineValue = x => (x.p.mrp || 0) * packSize(x.p) * x.packs;
+const subtotal = () => Object.values(cart).reduce((s,x)=>s+lineValue(x),0);
+
+async function init(){
+  try{
+    const r=await fetch("/api/products"); const data=await r.json(); products=data.products||[];
+    const cats=[...new Set(products.map(p=>p.category))].sort();
+    ["statProducts","statProducts2"].forEach(id=>document.getElementById(id).textContent=products.length.toLocaleString("en-IN"));
+    ["statCats","statCats2"].forEach(id=>document.getElementById(id).textContent=cats.length);
+    document.getElementById("categories").innerHTML=cats.map(c=>`<button class="cat" onclick="setCategory(${JSON.stringify(c)})"><b>${esc(c)}</b><small>${products.filter(p=>p.category===c).length} SKUs</small><span class="cat-arrow">View range →</span></button>`).join("");
+    document.getElementById("categoryTicker").innerHTML=[...cats,...cats].map(c=>`<button onclick="setCategory(${JSON.stringify(c)})">${esc(c)} <i>✦</i></button>`).join("");
+    document.getElementById("navcats").innerHTML=cats.slice(0,14).map(c=>`<a href="#catalogue" onclick="setCategory(${JSON.stringify(c)})">${esc(c)}</a>`).join("");
+    document.getElementById("catFilter").innerHTML='<option value="">All categories</option>'+cats.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join("");
+    document.getElementById("search").addEventListener("input",render);
+    document.getElementById("catFilter").addEventListener("change",render);
+    document.getElementById("sort").addEventListener("change",render);
+    document.getElementById("clearBtn").onclick=()=>{document.getElementById("search").value="";document.getElementById("catFilter").value="";document.getElementById("sort").value="relevance";render()};
+    loadCart(); showAllCategories();
+  }catch(e){document.getElementById("products").innerHTML='<div class="error">The catalogue could not be loaded. Please refresh or contact the ELECVERO trade desk.</div>'}
+}
+function setCategory(c){document.getElementById("catFilter").value=c;document.getElementById("catalogueTitle").textContent=c;document.getElementById("catalogueIntro").textContent=`Showing the complete ${c} range. Browse every available ELECVERO SKU in this category.`;document.getElementById("categoryBack").hidden=false;document.getElementById("selectedCategoryLabel").textContent=c;document.getElementById("catalogue").scrollIntoView({behavior:"smooth",block:"start"});render()}
+function showAllCategories(){document.getElementById("catFilter").value="";document.getElementById("search").value="";document.getElementById("catalogueTitle").textContent="Choose a category";document.getElementById("catalogueIntro").textContent="Select a product bucket to see its complete range. Your catalogue stays clean until you choose what you want to buy.";document.getElementById("categoryBack").hidden=true;document.getElementById("products").innerHTML='<div class="category-empty"><b>29 product categories</b><span>Choose a bucket above to view its complete SKU range.</span></div>'}
+function render(){
+  const q=document.getElementById("search").value.toLowerCase().trim(), c=document.getElementById("catFilter").value;
+  filtered=products.filter(p=>(!c||p.category===c)&&(!q||`${p.name} ${p.description||""} ${p.sku} ${p.category}`.toLowerCase().includes(q)));
+  const s=document.getElementById("sort").value;
+  if(s==="priceAsc")filtered.sort((a,b)=>(a.mrp??1e99)-(b.mrp??1e99));
+  if(s==="priceDesc")filtered.sort((a,b)=>(b.mrp??-1)-(a.mrp??-1));
+  if(s==="name")filtered.sort((a,b)=>a.name.localeCompare(b.name));
+  document.getElementById("count").textContent=`${filtered.length} products`;
+  document.getElementById("products").innerHTML=filtered.map(card).join("");
+}
+function card(p){
+  const canBuy=p.mrp!=null;
+  return `<article class="card">
+    <button class="pic image-trigger" aria-label="View ${esc(p.name)} image" onclick="openProduct('${p.sku}')"><img loading="lazy" src="/${p.image}" alt="${esc(p.name)}" onerror="this.src='/assets/images/product-placeholder.svg'"><span class="zoom-hint">Click to enlarge ↗</span></button>
+    <div class="card-body"><span class="sku">${esc(p.sku)}</span><h3>${esc(p.name)}</h3><p>${esc(p.description||"")}</p>
+    <div class="price">${canBuy?money(p.mrp*0.95):"Price on request"} <small>${canBuy?"/ unit from":""}</small></div>
+    <div class="pack"><span>${packLabel(p)}</span><span>List ${money(p.mrp)}</span></div>
+    <div class="card-actions"><button class="outline" onclick="openProduct('${p.sku}')">Details</button>${canBuy?`<button class="add" onclick="add('${p.sku}')">Add pack</button>`:`<button class="add disabled" onclick="openProduct('${p.sku}')">Request quote</button>`}</div></div>
+  </article>`;
+}
+function add(sku){const p=products.find(x=>x.sku===sku);if(!p||p.mrp==null)return;if(!cart[sku])cart[sku]={p,packs:1};else cart[sku].packs++;saveCart();openCart();toast("Added to trade basket")}
+function change(sku,d){if(!cart[sku])return;cart[sku].packs=Math.max(1,cart[sku].packs+d);saveCart();renderCart()}
 function remove(sku){delete cart[sku];saveCart();renderCart()}
-function change(sku,d){if(!cart[sku])return;cart[sku].qty=Math.max(1,cart[sku].qty+d);saveCart();renderCart()}
-function subtotal(){return Object.values(cart).reduce((s,x)=>s+(x.p.mrp||0)*x.qty,0)}
-function renderCart(){let items=Object.values(cart),sub=subtotal(),r=rate(sub),disc=sub*r,total=sub-disc;document.getElementById('cartCount').textContent=items.reduce((s,x)=>s+x.qty,0);document.getElementById('basket').innerHTML=items.length?items.map(x=>`<div class="line"><div><b>${esc(x.p.display_name)}</b><div class="sku">${x.p.sku} · ${esc(String(x.p.pack_qty||'—'))} pack</div><div>${money(x.p.mrp)} / unit</div></div><div class="qty"><button onclick="change('${x.p.sku}',-1)">−</button><span>${x.qty}</span><button onclick="change('${x.p.sku}',1)">+</button><button class="btn" onclick="remove('${x.p.sku}')">×</button></div></div>`).join(''):'<p>Your trade basket is empty.</p>';
-document.getElementById('summary').innerHTML=items.length?`<div class="row"><span>List value</span><b>${money(sub)}</b></div><div class="row"><span>Trade discount</span><b>− ${money(disc)} (${(r*100).toFixed(1)}%)</b></div><div class="row total"><span>Trade basket</span><span>${money(total)}</span></div><a class="wa" href="https://wa.me/${wa}?text=${encodeURIComponent(orderText())}" target="_blank">Send basket on WhatsApp</a><p class="note">Trade pricing is calculated from basket value. Final taxes, freight and payment terms will be confirmed at order/invoice stage.</p>`:''}
-function orderText(){let lines=['ELECVERO TRADE ORDER',''];for(const x of Object.values(cart))lines.push(`${x.p.sku} | ${x.p.display_name} | Qty ${x.qty} | List ${money(x.p.mrp)}`);lines.push('',`List value: ${money(subtotal())}`,`Trade discount: ${(rate(subtotal())*100).toFixed(1)}%`,`Trade basket: ${money(subtotal()*(1-rate(subtotal())))}`);return lines.join('\n')}
-function openCart(){document.getElementById('drawer').classList.add('open');renderCart()}function closeCart(){document.getElementById('drawer').classList.remove('open')}function saveCart(){localStorage.setItem('evCart',JSON.stringify(Object.fromEntries(Object.entries(cart).map(([k,v])=>[k,{qty:v.qty}]))));renderCart()}function loadCart(){try{let x=JSON.parse(localStorage.getItem('evCart')||'{}');for(const [k,v] of Object.entries(x)){let p=products.find(p=>p.sku===k);if(p)cart[k]={p,qty:v.qty}}}catch(e){}renderCart()}
-function esc(s){return String(s??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
-function openAccount(){document.getElementById('accountModal').classList.add('open')}
-function closeAccount(){document.getElementById('accountModal').classList.remove('open')}
-function sendAccount(){let n=document.getElementById('accName').value||'',ph=document.getElementById('accPhone').value||'',city=document.getElementById('accCity').value||'',gst=document.getElementById('accGst').value||'',need=document.getElementById('accNeed').value||'';let t=`ELECVERO BUSINESS ACCOUNT REQUEST\nName/Business: ${n}\nMobile: ${ph}\nCity: ${city}\nGSTIN: ${gst||'To be added later'}\nBuying need: ${need}`;window.open('https://wa.me/'+wa+'?text='+encodeURIComponent(t),'_blank')}
-function openProduct(sku){let p=products.find(x=>x.sku===sku);if(!p)return;let img=p.image_src?'assets/images/'+encodeURIComponent(p.image_src):'assets/images/product-placeholder.svg';document.getElementById('pmSku').textContent=p.sku;document.getElementById('pmName').textContent=p.display_name;document.getElementById('pmDesc').textContent=p.description;document.getElementById('pmMrp').textContent=money(p.mrp);document.getElementById('pmTrade').textContent=p.mrp!=null?money(p.mrp*.95):'Price on request';document.getElementById('pmPack').textContent=p.pack_qty||'—';document.getElementById('pmImg').src=img;document.getElementById('pmAdd').onclick=()=>{add(p.sku);closeProduct()};document.getElementById('productModal').classList.add('open')}
-function closeProduct(){document.getElementById('productModal').classList.remove('open')}
+function saveCart(){localStorage.setItem("elecvero-cart",JSON.stringify(Object.fromEntries(Object.entries(cart).map(([k,v])=>[k,{packs:v.packs}]))));renderCart()}
+function loadCart(){try{const x=JSON.parse(localStorage.getItem("elecvero-cart")||"{}");for(const [k,v] of Object.entries(x)){const p=products.find(p=>p.sku===k);if(p)cart[k]={p,packs:v.packs}}}catch{}}
+function renderCart(){
+  const items=Object.values(cart), sub=subtotal(), r=rate(sub), disc=sub*r,total=sub-disc;
+  document.getElementById("cartCount").textContent=items.reduce((s,x)=>s+x.packs,0);
+  document.getElementById("tierHint").textContent=items.length?` · ${(r*100).toFixed(1)}% current discount`:"";
+  document.getElementById("basket").innerHTML=items.length?items.map(x=>`<div class="basket-line"><div><b>${esc(x.p.name)}</b><span>${esc(x.p.sku)} · ${packLabel(x.p)}</span><span>${money(x.p.mrp)} × ${packSize(x.p)} units</span></div><div class="qty"><button onclick="change('${x.p.sku}',-1)">−</button><b>${x.packs}</b><button onclick="change('${x.p.sku}',1)">+</button><button class="remove" onclick="remove('${x.p.sku}')">×</button></div></div>`).join(""):'<div class="empty">Your trade basket is empty.<br><small>Add packs from the catalogue to start an order.</small></div>';
+  document.getElementById("summary").innerHTML=items.length?`<div class="summary-row"><span>List value</span><b>${money(sub)}</b></div><div class="summary-row"><span>Trade discount</span><b>− ${money(disc)}</b></div><div class="summary-row total"><span>Trade basket</span><b>${money(total)}</b></div><button class="primary full" onclick="openCheckout()">Submit order request</button><button class="whatsapp full" onclick="sendOrderWhatsApp()">WhatsApp basket</button><small class="note">Final GST, freight and payment terms are confirmed at quotation/invoice stage.</small>`:"";
+}
+function openCart(){document.getElementById("drawer").classList.add("open");renderCart()}
+function closeCart(){document.getElementById("drawer").classList.remove("open")}
+function openProduct(sku){const p=products.find(x=>x.sku===sku);if(!p)return;document.getElementById("pmSku").textContent=p.sku;document.getElementById("pmName").textContent=p.name;document.getElementById("pmDesc").textContent=p.description||"Catalogue item";document.getElementById("pmMrp").textContent=money(p.mrp);document.getElementById("pmTrade").textContent=p.mrp==null?"Price on request":money(p.mrp*.95);document.getElementById("pmPack").textContent=packLabel(p);document.getElementById("pmImg").src="/"+p.image;document.getElementById("pmImg").alt=p.name;document.getElementById("pmImg").onclick=()=>openImageLightbox(p);document.getElementById("pmAdd").textContent=p.mrp==null?"Close":`Add ${packLabel(p)}`;document.getElementById("pmAdd").onclick=()=>{if(p.mrp!=null)add(p.sku);closeProduct()};document.getElementById("productModal").classList.add("open")}
+function openImageLightbox(p){document.getElementById("lightboxImg").src="/"+p.image;document.getElementById("lightboxImg").alt=p.name;document.getElementById("lightboxCaption").textContent=`${p.name} · ${p.sku}`;document.getElementById("imageLightbox").classList.add("open")}
+function closeImageLightbox(){document.getElementById("imageLightbox").classList.remove("open")}
+function closeProduct(){document.getElementById("productModal").classList.remove("open")}
+function openAccount(){document.getElementById("accountModal").classList.add("open")}
+function closeAccount(){document.getElementById("accountModal").classList.remove("open")}
+function accountPayload(){return {business_name:document.getElementById("accBusiness").value.trim(),contact_name:document.getElementById("accContact").value.trim(),phone:document.getElementById("accPhone").value.trim(),email:document.getElementById("accEmail").value.trim(),city:document.getElementById("accCity").value.trim(),gstin:document.getElementById("accGst").value.trim(),buying_need:document.getElementById("accNeed").value.trim()}}
+async function submitAccount(){const p=accountPayload();if(!p.business_name||!p.phone){setStatus("accountStatus","Business name and mobile number are required.");return}try{const r=await fetch("/api/account",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(p)});const d=await r.json();if(!r.ok)throw Error(d.error||"Request failed");setStatus("accountStatus","Request received. The ELECVERO trade desk can follow up on this enquiry.");toast("Business account request submitted")}catch(e){setStatus("accountStatus",e.message)}}
+function sendAccountWhatsApp(){const p=accountPayload();const t=`ELECVERO BUSINESS ACCOUNT REQUEST\nBusiness: ${p.business_name}\nContact: ${p.contact_name}\nMobile: ${p.phone}\nEmail: ${p.email}\nCity: ${p.city}\nGSTIN: ${p.gstin||"To be added"}\nBuying need: ${p.buying_need}`;window.open(`https://wa.me/${WA}?text=${encodeURIComponent(t)}`,"_blank")}
+function checkoutCustomer(){return {business_name:document.getElementById("coBusiness").value.trim(),contact_name:document.getElementById("coContact").value.trim(),phone:document.getElementById("coPhone").value.trim(),email:document.getElementById("coEmail").value.trim(),city:document.getElementById("coCity").value.trim(),pincode:document.getElementById("coPincode").value.trim(),gstin:document.getElementById("coGst").value.trim()}}
+function openCheckout(){if(!Object.keys(cart).length)return;const sub=subtotal(),r=rate(sub);document.getElementById("checkoutSummary").innerHTML=`<div><b>${Object.keys(cart).length} product lines</b><span>List value ${money(sub)} · ${r*100}% trade discount · ${money(sub*(1-r))} before final GST/freight confirmation</span></div>`;document.getElementById("checkoutModal").classList.add("open")}
+function closeCheckout(){document.getElementById("checkoutModal").classList.remove("open")}
+async function submitOrder(){const c=checkoutCustomer();if(!c.business_name||!c.phone||!/^\d{6}$/.test(c.pincode)){setStatus("orderStatus","Business name, mobile number and a valid 6-digit PIN code are required.");return}const items=Object.values(cart).map(x=>({sku:x.p.sku,packs:x.packs}));try{const r=await fetch("/api/orders",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({customer:c,items})});const d=await r.json();if(!r.ok)throw Error(d.error||"Order request failed");setStatus("orderStatus",`Order request ${d.order_ref} received. Total trade basket: ${money(d.total)}.`);localStorage.removeItem("elecvero-cart");cart={};renderCart();toast(`Order ${d.order_ref} submitted`)}catch(e){setStatus("orderStatus",e.message)}}
+function orderText(){const sub=subtotal(),r=rate(sub);let a=["ELECVERO TRADE ORDER REQUEST",""];for(const x of Object.values(cart))a.push(`${x.p.sku} | ${x.p.name} | Packs ${x.packs} | ${packLabel(x.p)} | List ${money(x.p.mrp)}`);a.push("",`List value: ${money(sub)}`,`Trade discount: ${(r*100).toFixed(1)}%`,`Trade basket: ${money(sub*(1-r))}`);return a.join("\\n")}
+function sendOrderWhatsApp(){if(!Object.keys(cart).length)return;window.open(`https://wa.me/${WA}?text=${encodeURIComponent(orderText())}`,"_blank")}
+function setStatus(id,msg){document.getElementById(id).textContent=msg}
+function toast(msg){const el=document.getElementById("toast");el.textContent=msg;el.classList.add("show");setTimeout(()=>el.classList.remove("show"),2200)}
+function modalBusy(){return [...document.querySelectorAll(".modal.open")].length>0 || document.getElementById("drawer").classList.contains("open") || document.getElementById("imageLightbox").classList.contains("open")}
+function openPincode(){if(localStorage.getItem("elecvero-pin-checked")==="1")return;document.getElementById("pincodeModal").classList.add("open");setTimeout(()=>document.getElementById("pinInput")?.focus(),120)}
+function skipPincode(){localStorage.setItem("elecvero-pin-checked","1");document.getElementById("pincodeModal").classList.remove("open");scheduleDealerPopups()}
+async function checkPincode(){const pin=document.getElementById("pinInput").value.trim();const status=document.getElementById("pinStatus");if(!/^\d{6}$/.test(pin)){status.textContent="Please enter a valid 6-digit PIN code.";return}status.textContent="Checking delivery coverage…";try{const r=await fetch(`/api/serviceability?pin=${encodeURIComponent(pin)}`);const d=await r.json();localStorage.setItem("elecvero-pincode",pin);localStorage.setItem("elecvero-pin-checked","1");if(d.status==="serviceable"){status.textContent=`✓ ${pin} is serviceable for ELECVERO delivery.`;status.dataset.state="ok"}else if(d.status==="not_serviceable"){status.textContent=`We’re not currently showing delivery coverage for ${pin}. Please contact the trade desk.`;status.dataset.state="bad"}else{status.textContent=`PIN ${pin} is valid. Delivery coverage will be confirmed by the trade desk before dispatch.`;status.dataset.state="pending"}setTimeout(()=>{document.getElementById("pincodeModal").classList.remove("open");scheduleDealerPopups()},900)}catch(e){status.textContent="We could not complete the coverage check right now. Please contact support@elecvero.in."}}
+function scheduleDealerPopups(){if(localStorage.getItem("elecvero-dealer-registered")==="1")return;setTimeout(()=>{if(!modalBusy())openAccount()},30000);window.__elecveroDealerTimer=setInterval(()=>{if(localStorage.getItem("elecvero-dealer-registered")==="1"){clearInterval(window.__elecveroDealerTimer);return}if(!modalBusy())openAccount()},30000)}
+const originalSubmitAccount=submitAccount;submitAccount=async function(){await originalSubmitAccount();const status=document.getElementById("accountStatus");if(status.textContent.startsWith("Request received")){localStorage.setItem("elecvero-dealer-registered","1");if(window.__elecveroDealerTimer)clearInterval(window.__elecveroDealerTimer)}}
+document.getElementById("accountBtn").onclick=openAccount;document.getElementById("basketBtn").onclick=openCart;
 init();
-</script></body></html>
+setTimeout(openPincode,500);
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeImageLightbox();closeProduct();closeCart()}});
+</script>
+</body></html>
